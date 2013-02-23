@@ -3,7 +3,7 @@
 WP-Instaroll
 ============
 
-Contributors: FeliceMente (Marco Iannaccone), rformato (Renato Formato), patrick91 (Patrick Guido Arminio)  
+Contributors: FeliceMente (Marco Iannaccone), rformato (Renato Formato), patrick91 (Patrick Guido Arminio), Codephonic
 Tags: instagram, photos, wordpress, plugin  
 Requires at least: 3.3  
 Tested up to: 3.3.2  

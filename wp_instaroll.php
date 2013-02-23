@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: WP-Instaroll
+Plugin Name: WP-Instaroll-Codephonic
 Plugin URI: http://rollstudio.it
 Description: Simple Instagram plug-in for creating WordPress posts from Instagram photos
-Version: 1.1.1
+Version: 1.1.2
 Author: ROLL Multimedia Design
 Author URI: http://rollstudio.it
 */
