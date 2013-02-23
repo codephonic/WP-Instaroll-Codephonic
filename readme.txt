@@ -1,4 +1,4 @@
-=== WP-Instaroll ===
+=== WP-Instaroll === 
 Contributors: FeliceMente, rformato, patrick91
 Donate link: http://www.rollstudio.it/  
 Tags: instagram, photos 
