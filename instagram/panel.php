@@ -446,7 +446,7 @@ function wpinstaroll_panel_draw()
 						</tr>
 						<tr>
 							<th scope="row">
-								<label>Instagram <em>Search Tag</em> (without #)<br/><em>(optional)</em></label>
+								<label>Instagram <em>Search Tag(s)</em> (without #). You can provide multiple tags comma separated<br/><em>(optional)</em></label>
 							</th>
 							<td>
 								<input type="text" name="<?php echo WP_ROLL_INSTAGRAM_PLUGIN_PREFIX.'_instagram_search_tag'; ?>" value="<?php print(get_option(WP_ROLL_INSTAGRAM_PLUGIN_PREFIX.'_instagram_search_tag')); ?>" class="regular-text" />

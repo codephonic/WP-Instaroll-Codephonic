@@ -322,7 +322,7 @@ function wpinstaroll_updateLocalDBWithNewPhotos($photo_data)
 
 
 // create a new post from and Instagram photo
-function wpinstaroll_createpostfromphoto($insta_id, $insta_url, $insta_link='', $insta_caption='', $insta_author_username='', $insta_author_id='')
+function wpinstaroll_createpostfromphoto($insta_id, $insta_url, $insta_link='', $insta_caption='', $insta_author_username='', $insta_author_id='', $insta_author_picture='', $insta_author_full_name='')
 {
 	// mandatory parameters missing
 	if (empty($insta_id) || empty($insta_url))
@@ -406,6 +406,8 @@ function wpinstaroll_createpostfromphoto($insta_id, $insta_url, $insta_link='', 
 	update_post_meta($created_post_ID, '_'.WP_ROLL_INSTAGRAM_PLUGIN_METADATA_PREFIX.'_insta_link', $insta_link);
 	update_post_meta($created_post_ID, '_'.WP_ROLL_INSTAGRAM_PLUGIN_METADATA_PREFIX.'_insta_authorusername', $insta_author_username);
 	update_post_meta($created_post_ID, '_'.WP_ROLL_INSTAGRAM_PLUGIN_METADATA_PREFIX.'_insta_authorid', $insta_author_id);	
+	update_post_meta($created_post_ID, '_'.WP_ROLL_INSTAGRAM_PLUGIN_METADATA_PREFIX.'_insta_author_picture', $insta_author_picture);	
+	update_post_meta($created_post_ID, '_'.WP_ROLL_INSTAGRAM_PLUGIN_METADATA_PREFIX.'_insta_author_full_name', $insta_author_full_name);	
 	
 	
 	// d. download image from Instagram and associate to post
@@ -571,7 +573,9 @@ function wpinstaroll_automatic_post_creation()
 													$element->link,
 													$element->caption->text,
 													$element->user->username,
-													$element->user->id);
+		$element->user->id,
+		$element->user->profile_picture,
+		$element->user->full_name);
 				}
 			}
 		}
@@ -580,10 +584,20 @@ function wpinstaroll_automatic_post_creation()
 		// tag stream - only in this case, we check for search tag presence
 	if (($scheduled_publication_stream == 'tag' || $scheduled_publication_stream == 'user_tag') && !empty($search_tag))
 	{
+		$tags = preg_split("/[\s,]+/", $search_tag);
+		foreach($tags as $single_tag) {
+		  $single_tag = trim($single_tag);
+		    wpinstaroll_getPhotosWithTagAndSave($single_tag);		  
+		}
+	}
+}
+
+function wpinstaroll_getPhotosWithTagAndSave($search_tag) {
+		
 		$photoStream = wpinstaroll_getInstagramPhotosWithTag($search_tag);
-
+		
 		$data = $photoStream->data;
-
+		
 		if ($data)
 		{
 			$data = array_reverse($data);
@@ -599,11 +613,13 @@ function wpinstaroll_automatic_post_creation()
 													$element->link,
 													$element->caption->text,
 													$element->user->username,
-													$element->user->id);
+													$element->user->id,
+		$element->user->profile_picture,
+		$element->user->full_name);
 				}
 			}
 		}
-	}
+
 }
 
 ?>

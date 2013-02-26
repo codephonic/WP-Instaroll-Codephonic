@@ -1,0 +1,3 @@
+[submodule "wp-content/plugins/wp-twitter-tools-codephonic"]
+	path = wp-content/plugins/wp-twitter-tools-codephonic
+	url = git@github.com:codephonic/WP-Twitter-Tools-Codephonic.git
